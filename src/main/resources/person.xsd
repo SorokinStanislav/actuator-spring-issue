@@ -1,0 +1,25 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:tns="http://example.com/" targetNamespace="http://example.com/"
+           attributeFormDefault="unqualified" elementFormDefault="unqualified" >
+  <xs:element name="personRequest" type="tns:personRequest"/>
+  <xs:element name="personResponse" type="tns:personResponse"/>
+  <xs:element name="ServiceException" type="tns:ServiceException"/>
+  
+  <xs:complexType name="personRequest">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="personResponse">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceException">
+    <xs:sequence>
+      <xs:element name="messageid" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element minOccurs="0" name="variables" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
