@@ -1,5 +1,6 @@
 package com.example;
 
+import io.micrometer.core.annotation.Timed;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -15,6 +16,7 @@ public class PersonEndpoint {
     
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "personRequest")
     @ResponsePayload
+    @Timed
     public JAXBElement<PersonResponse> personRequest(@RequestPayload PersonRequest request) throws ServiceFaultException {
         try {
             int num = Integer.valueOf(request.getId()) % 3 + 1;
