@@ -2,6 +2,7 @@
            xmlns:tns="http://example.com/" targetNamespace="http://example.com/"
            attributeFormDefault="unqualified" elementFormDefault="unqualified" >
   <xs:element name="personRequest" type="tns:personRequest"/>
+  <xs:element name="originRequest" type="tns:personRequest"/>
   <xs:element name="personResponse" type="tns:personResponse"/>
   <xs:element name="ServiceException" type="tns:ServiceException"/>
   

@@ -12,6 +12,10 @@
         <wsdl:part element="tns:personRequest" name="personRequest">
         </wsdl:part>
     </wsdl:message>
+    <wsdl:message name="originRequest">
+        <wsdl:part element="tns:personRequest" name="personRequest">
+        </wsdl:part>
+    </wsdl:message>
     <wsdl:message name="personResponse">
         <wsdl:part element="tns:personResponse" name="personResponse">
         </wsdl:part>
@@ -29,12 +33,32 @@
             <wsdl:fault message="tns:ServiceException" name="ServiceException">
             </wsdl:fault>            
         </wsdl:operation>
+        <wsdl:operation name="getOrigin">
+            <wsdl:input message="tns:originRequest" name="originRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:personResponse" name="personResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="PersonPortSoap11" type="tns:PersonPort">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="getPerson">
             <soap:operation soapAction=""/>
             <wsdl:input name="personRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="personResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOrigin">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="originRequest">
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="personResponse">

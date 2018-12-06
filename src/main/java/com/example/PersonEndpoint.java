@@ -32,4 +32,18 @@ public class PersonEndpoint {
             throw new ServiceFaultException(e.getMessage(), new ServiceException());
         }
     }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "originRequest")
+    @ResponsePayload
+    @Timed
+    public JAXBElement<PersonResponse> getOrigin() throws ServiceFaultException {
+        try {
+            PersonResponse response = new PersonResponse();
+            response.setName("Rurik");
+            return objectFactory.createPersonResponse(response);
+        }
+        catch (Exception e) {
+            throw new ServiceFaultException(e.getMessage(), new ServiceException());
+        }
+    }
 }
